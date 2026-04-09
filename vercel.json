@@ -3,6 +3,10 @@
   "outputDirectory": "public",
   "trailingSlash": false,
   "cleanUrls": true,
+  "rewrites": [
+    { "source": "/html/:path*", "destination": "/static/html/:path*" },
+    { "source": "/books/:path*", "destination": "/static/books/:path*" }
+  ],
   "headers": [
     {
       "source": "/(.*).js",
