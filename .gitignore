@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build output
+public/
+.quartz-cache/
+.output/
+dist/
+
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Quartz specific
+.quartz/
+quartz/.quartz-cache/
+
+# Cache
+.cache/
+.temp/
+.tmp/
+
+# Lock files (optional, keep if you want)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
