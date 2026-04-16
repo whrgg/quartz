@@ -2,13 +2,13 @@ import { FilePath, QUARTZ, joinSegments } from "../../util/path"
 import { QuartzEmitterPlugin } from "../types"
 import fs from "fs"
 import { glob } from "../../util/glob"
-import { dirname, basename } from "path"
+import { dirname } from "path"
 
 function generateIndexHtml(title: string, files: string[], basePath: string): string {
   const links = files
     .map((file) => {
       const encodedFile = encodeURIComponent(file)
-      return `    <li><a href="${encodedFile}">${file}</a></li>`
+      return `    <li><a href="${basePath}${encodedFile}">${file}</a></li>`
     })
     .join("\n")
 
@@ -74,7 +74,7 @@ export const Static: QuartzEmitterPlugin = () => ({
     for (const [dirName, files] of dirFiles) {
       if (files.length > 0 && dirTitles[dirName]) {
         const title = dirTitles[dirName]
-        const indexContent = generateIndexHtml(title, files.sort(), `/${dirName}/`)
+        const indexContent = generateIndexHtml(title, files.sort(), `/static/${dirName}/`)
         const indexPath = joinSegments(outputStaticPath, dirName, "index.html") as FilePath
         await fs.promises.writeFile(indexPath, indexContent, "utf-8")
         yield indexPath
